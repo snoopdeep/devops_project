@@ -32,6 +32,12 @@ pipeline {
             }
         }
 
+        stage('Serve') {
+            steps {
+                bat 'serve -s build'
+            }
+        }
+
         // stage('Deploy') {
         //     steps {
         //         // Deployment steps can be added here if needed
