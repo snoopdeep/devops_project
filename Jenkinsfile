@@ -35,25 +35,34 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('kkashyap142/see-devops:latest')
+                    bat 'docker build -t kkashyap142/see-devops:latest .'
                 }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                bat 'kkashyap142/see-devops:latest'
+                script {
+                    bat 'docker push kkashyap142/see-devops:latest'
+                }
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+                script {
+                    bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+                }
             }
         }
     }
 
     post {
+        always {
+            echo 'Pipeline Completed!'
+            bat 'docker ps -a'
+            bat 'docker images'
+        }
         success {
             echo 'Build Successful!'
         }
