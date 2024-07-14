@@ -76,13 +76,13 @@ pipeline {
         //     }
         // }
 
-        // stage('Run Docker Container') {
-        //     steps {
-        //         echo 'Running Docker container...'
-        //         bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
-        //         echo 'Docker container running.'
-        //     }
-        // }
+        stage('Run Docker Container') {
+            steps {
+                echo 'Running Docker container...'
+                bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+                echo 'Docker container running.'
+            }
+        }
     }
 
     post {
