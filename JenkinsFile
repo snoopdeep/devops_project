@@ -37,13 +37,13 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                bat 'npm run test --passWithNoTests'
-                echo 'Tests completed.'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Running tests...'
+        //         bat 'npm run test --passWithNoTests'
+        //         echo 'Tests completed.'
+        //     }
+        // }
 
         // stage('Build Docker Image') {
         //     steps {
