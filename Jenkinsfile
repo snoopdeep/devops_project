@@ -32,17 +32,25 @@ pipeline {
             }
         }
 
-        stage('Serve') {
+        stage('Build Docker Image') {
             steps {
-                bat 'serve -s build'
+                script {
+                    def dockerImage = docker.build('kkashyap142/see-devops:latest')
+                }
             }
         }
 
-        // stage('Deploy') {
-        //     steps {
-        //         // Deployment steps can be added here if needed
-        //     }
-        // }
+        stage('Push Docker Image') {
+            steps {
+                bat 'kkashyap142/see-devops:latest'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+            }
+        }
     }
 
     post {
