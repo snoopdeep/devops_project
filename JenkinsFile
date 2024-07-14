@@ -40,15 +40,15 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                echo 'Building Docker image...'
-                script {
-                    bat 'docker build -t kkashyap142/see-devops:latest .'
-                }
-                echo 'Docker image built.'
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         echo 'Building Docker image...'
+        //         script {
+        //             bat 'docker build -t kkashyap142/see-devops:latest .'
+        //         }
+        //         echo 'Docker image built.'
+        //     }
+        // }
 
         // stage('Login to Docker Hub') {
         //     steps {
@@ -63,29 +63,29 @@ pipeline {
         //     }
         // }
 
-        stage('Push Docker Image') {
-            steps {
-                echo 'Pushing Docker image...'
-                bat 'docker push kkashyap142/see-devops:latest'
-                echo 'Docker image pushed.'
-            }
-        }
+        // stage('Push Docker Image') {
+        //     steps {
+        //         echo 'Pushing Docker image...'
+        //         bat 'docker push kkashyap142/see-devops:latest'
+        //         echo 'Docker image pushed.'
+        //     }
+        // }
 
-        stage('Run Docker Container') {
-            steps {
-                echo 'Running Docker container...'
-                bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
-                echo 'Docker container running.'
-            }
-        }
+        // stage('Run Docker Container') {
+        //     steps {
+        //         echo 'Running Docker container...'
+        //         bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+        //         echo 'Docker container running.'
+        //     }
+        // }
     }
 
     post {
-        always {
-            echo 'Pipeline completed.'
-            bat 'docker ps -a'
-            bat 'docker images'
-        }
+        // always {
+        //     echo 'Pipeline completed.'
+        //     bat 'docker ps -a'
+        //     bat 'docker images'
+        // }
         success {
             echo 'Build successful!'
         }
