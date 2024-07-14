@@ -55,18 +55,18 @@ pipeline {
             }
         }
 
-        // stage('Login to Docker Hub') {
-        //     steps {
-        //         echo 'Logging in to Docker Hub...'
-        //         script {
-        //             withCredentials([string(credentialsId: 'dockerhub-username', variable: 'DOCKER_USERNAME'), 
-        //                              string(credentialsId: 'dockerhub-password', variable: 'DOCKER_PASSWORD')]) {
-        //                 bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
-        //             }
-        //         }
-        //         echo 'Logged in to Docker Hub.'
-        //     }
-        // }
+        stage('Login to Docker Hub') {
+            steps {
+                echo 'Logging in to Docker Hub...'
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
+                    }
+                }
+                echo 'Logged in to Docker Hub.'
+            }
+        }
+
 
         // stage('Push Docker Image') {
         //     steps {
