@@ -16,4 +16,4 @@ spec:
         - name: see-devops
           image: kkashyap142/see-devops:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
