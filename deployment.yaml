@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: see-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: see-devops
+  template:
+    metadata:
+      labels:
+        app: see-devops
+    spec:
+      containers:
+        - name: see-devops
+          image: kkashyap142/see-devops:latest
+          ports:
+            - containerPort: 80
