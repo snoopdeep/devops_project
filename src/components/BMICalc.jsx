@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 export default function BMICalc() {
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState(null);
   const [bmi, setBMI] = useState(0);
 
   const calculateBMI = () => {
@@ -23,6 +23,8 @@ export default function BMICalc() {
         />
       </label>
       <br />
+      <br />
+      <br />
       <label>
         Height (m):
         <input
@@ -32,7 +34,10 @@ export default function BMICalc() {
         />
       </label>
       <br />
+      <br />
+      <br />
       <button onClick={calculateBMI}>Calculate BMI</button>
+      <br />
       <br />
       <p>Your BMI is: {bmi}</p>
     </div>

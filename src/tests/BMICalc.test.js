@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import BMICalc from "../components/BMICalc";
-// import "@testing-library/jest-dom/extend-expect";
 
 test("renders the BMI Calculator component", () => {
   render(<BMICalc />);
