@@ -1,13 +1,9 @@
-import Header from "./components/Header";
-import Info from "./components/Info";
-import Skip from "./components/Skip";
+import BMICalc from "./components/BMICalc";
 
 export default function App() {
   return (
     <div>
-      <Header />
-      <Info />
-      <Skip />
+      <BMICalc />
     </div>
   );
 }
