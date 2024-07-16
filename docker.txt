@@ -1,0 +1,26 @@
+docker build -t kkashyap142/see-devops:latest .
+
+
+docker run -d -p 3000:3000 kkashyap142/see-devops:latest
+
+
+wsl.exe --shutdown
+
+
+minikube delete
+
+docker context use default
+
+minikube start
+
+minikube status	
+
+kubectl run demosee --image=kkashyap142/see-devops:latest --port=3000
+
+kubectl get pods
+
+kubectl expose pod demosee --name=demoseesvc --port=3000
+
+kubectl port-forward service/demoseesvc 7080:3000
+
+
