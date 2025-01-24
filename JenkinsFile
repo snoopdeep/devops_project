@@ -1,8 +1,85 @@
+// pipeline {
+//     agent any
+
+//     environment {
+//         NODEJS_HOME = tool name: 'NodeJS 20.14.0'
+//         PATH = "${env.NODEJS_HOME}\\bin;${env.PATH}"
+//     }
+
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 git branch: 'master', 
+//                 url: 'https://github.com/kashyap142/see-devops.git'
+//             }
+//         }
+
+//         stage('Install Dependencies') {
+//             steps {
+//                 bat 'npm install'
+//             }
+//         }
+
+//         stage('Build') {
+//             steps {
+//                 bat 'npm run build'
+//             }
+//         }
+
+//         stage('Test') {
+//             steps {
+//                 bat 'npm run test'
+//             }
+//         }
+
+//         stage('Build Docker Image') {
+//             steps {
+//                 script {
+//                     bat 'docker build -t kkashyap142/see-devops:latest .'
+//                 }
+//             }
+//         }
+
+//         stage('Login to Docker Hub') {
+//             steps {
+//                 script {
+//                     withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+//                         bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
+//                     }
+//                 }
+//             }
+//         }
+
+
+//         stage('Push Docker Image') {
+//             steps {
+//                 bat 'docker push deepak/see-devops:latest'
+//             }
+//         }
+
+//         stage('Run Docker Container') {
+//             steps {
+//                 bat 'docker run -d -p 3000:3000 deepak/see-devops:latest'
+//             }
+//         }
+//     }
+
+//     post {
+//         success {
+//             echo 'Build successful!'
+//         }
+//         failure {
+//             echo 'Build failed!'
+//         }
+//     }
+// }
+
+
 pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = tool name: 'NodeJS 20.14.0'
+        NODEJS_HOME = tool name: 'NodeJS 20.14.0'  // Ensure this matches the name you entered in Jenkins' Global Tool Configuration
         PATH = "${env.NODEJS_HOME}\\bin;${env.PATH}"
     }
 
@@ -10,7 +87,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master', 
-                url: 'https://github.com/kashyap142/see-devops.git'
+                url: 'https://github.com/snoopdeep/devops_project.git'
             }
         }
 
@@ -35,7 +112,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t kkashyap142/see-devops:latest .'
+                    bat 'docker build -t deepak/see-devops:latest .'
                 }
             }
         }
@@ -49,7 +126,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Push Docker Image') {
             steps {
