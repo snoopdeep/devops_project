@@ -53,13 +53,13 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push kkashyap142/see-devops:latest'
+                bat 'docker push deepak/see-devops:latest'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 3000:3000 kkashyap142/see-devops:latest'
+                bat 'docker run -d -p 3000:3000 deepak/see-devops:latest'
             }
         }
     }
